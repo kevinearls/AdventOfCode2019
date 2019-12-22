@@ -22,6 +22,17 @@ func calculateMass(module int) int {
 	return result
 }
 
+func calculateMassWithFuel(module int) int {
+	sum := 0;
+	result := calculateMass(module)
+	for result > 0 {
+		sum += result
+		result = calculateMass(result)
+	}
+
+	return sum
+}
+
 func readFile(filePath string) (numbers []int) {
 	fd, err := os.Open(filePath)
 	if err != nil {
