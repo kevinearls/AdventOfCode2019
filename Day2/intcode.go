@@ -1,22 +1,22 @@
 package Day2
 
-func process(instructions []int) []int {
+func process(memory []int) []int {
 	currentPosition := 0;
-	for instructions[currentPosition] != 99 {
+	for memory[currentPosition] != 99 {
 		result := 0
-		opcode := instructions[currentPosition]
-		location1 := instructions[currentPosition + 1]
-		location2 := instructions[currentPosition + 2]
-		operand1 := instructions[location1]
-		operand2 := instructions[location2]
-		resultPosition := instructions[currentPosition + 3]
-		if opcode == 1 {
-			result = operand1 + operand2
-		} else if opcode == 2 {
-			result = operand1 * operand2
+		instruction := memory[currentPosition]
+		address1 := memory[currentPosition + 1]
+		address2 := memory[currentPosition + 2]
+		parameter1 := memory[address1]
+		parameter2 := memory[address2]
+		resultPosition := memory[currentPosition + 3]
+		if instruction == 1 {
+			result = parameter1 + parameter2
+		} else if instruction == 2 {
+			result = parameter1 * parameter2
 		}
-		instructions[resultPosition] = result
+		memory[resultPosition] = result
 		currentPosition += 4
 	}
-	return instructions
+	return memory
 }
